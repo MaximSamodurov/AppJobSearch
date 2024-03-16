@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ProfileController.swift
 //  App Job Search
 //
 //  Created by Fixed on 12.03.24.
@@ -7,13 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProfileController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBrown
     }
-
-
 }
-
