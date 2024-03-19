@@ -15,12 +15,11 @@ class TabBarController: UITabBarController {
     }
 
     private func setupTabs() {
-        
         #warning("Как запрезенить EnterAccountController в Tabbar")
-        let mainVC = self.createNav(with: "Поиск", and: UIImage(systemName: "magnifyingglass"), vc: EnterAccountController())
+        let mainVC = self.createNav(with: "Поиск", and: UIImage(systemName: "magnifyingglass"), vc: MainSearchViewController())
         let favVC = self.createNav(with: "Избранное", and: UIImage(systemName: "heart"), vc: VacanyDetailedController())
         let applyingVC = self.createNav(with: "Отклики", and: UIImage(systemName: "envelope"), vc: MainViewController())
-        let messagesVC = self.createNav(with: "Сообщения", and: UIImage(systemName: "message"), vc: UIViewController())
+        let messagesVC = self.createNav(with: "Сообщения", and: UIImage(systemName: "message"), vc: EnterAccountController())
         let profileVC = self.createNav(with: "Профиль", and: UIImage(systemName: "person"), vc: ProfileController())
         self.setViewControllers([mainVC, favVC, applyingVC, messagesVC, profileVC], animated: true)
         tabBar.backgroundColor = UIColor.black
@@ -30,7 +29,6 @@ class TabBarController: UITabBarController {
         let nav = UINavigationController(rootViewController: vc)
         nav.tabBarItem.title = title
         nav.tabBarItem.image = image
-        
         return nav
     }
 }

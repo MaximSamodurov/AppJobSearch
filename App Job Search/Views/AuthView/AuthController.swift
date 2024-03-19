@@ -102,8 +102,8 @@ class AuthController: UIViewController {
     
     override func viewDidLoad() {
         setupLayout()
+        navigationItem.leftBarButtonItem?.isEnabled = false
     }
-    
     
     private func setupLayout() {
         view.addSubview(overallStackView)

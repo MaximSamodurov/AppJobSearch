@@ -23,6 +23,8 @@
 		6A8429E82BA5AD0D0026B043 /* MainViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8429E72BA5AD0D0026B043 /* MainViewController+CollectionView.swift */; };
 		6A8429EA2BA5AD660026B043 /* VacancyDetailedController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8429E92BA5AD660026B043 /* VacancyDetailedController+CollectionView.swift */; };
 		6A8429EF2BA5B1320026B043 /* EnterAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8429EE2BA5B1320026B043 /* EnterAccountViewModel.swift */; };
+		6A8429F12BA607750026B043 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8429F02BA607750026B043 /* Observable.swift */; };
+		6A8429F32BA745B50026B043 /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8429F22BA745B50026B043 /* MainSearchViewController.swift */; };
 		6A9E18DF2BA166EE007260EE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E18DE2BA166EE007260EE /* CustomButton.swift */; };
 		6A9E18E92BA19C54007260EE /* RecommendedContanier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E18E82BA19C54007260EE /* RecommendedContanier.swift */; };
 		6A9E18EB2BA1D0D5007260EE /* RecommendedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E18EA2BA1D0D5007260EE /* RecommendedSection.swift */; };
@@ -56,6 +58,8 @@
 		6A8429E72BA5AD0D0026B043 /* MainViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		6A8429E92BA5AD660026B043 /* VacancyDetailedController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VacancyDetailedController+CollectionView.swift"; sourceTree = "<group>"; };
 		6A8429EE2BA5B1320026B043 /* EnterAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterAccountViewModel.swift; sourceTree = "<group>"; };
+		6A8429F02BA607750026B043 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		6A8429F22BA745B50026B043 /* MainSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewController.swift; sourceTree = "<group>"; };
 		6A9E18DE2BA166EE007260EE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6A9E18E82BA19C54007260EE /* RecommendedContanier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedContanier.swift; sourceTree = "<group>"; };
 		6A9E18EA2BA1D0D5007260EE /* RecommendedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedSection.swift; sourceTree = "<group>"; };
@@ -100,15 +104,15 @@
 		6A0013F92BA0592300695D50 /* App Job Search */ = {
 			isa = PBXGroup;
 			children = (
-				6A8429ED2BA5B1160026B043 /* Models */,
+				6A8429EB2BA5B0E20026B043 /* Views */,
+				6A8429ED2BA5B1160026B043 /* ViewModels */,
+				6A0014142BA077AC00695D50 /* Helpers */,
+				6A00140F2BA0698100695D50 /* Application */,
+				6A00140E2BA0696B00695D50 /* Supporting Files */,
 				6A00141B2BA07B8100695D50 /* ApplyingController.swift */,
 				6A00141D2BA07BAD00695D50 /* MessagesController.swift */,
 				6A00141F2BA07BC600695D50 /* ProfileController.swift */,
 				6A0014192BA07B2E00695D50 /* FavourtiesController.swift */,
-				6A8429EB2BA5B0E20026B043 /* Views */,
-				6A0014142BA077AC00695D50 /* Helpers */,
-				6A00140F2BA0698100695D50 /* Application */,
-				6A00140E2BA0696B00695D50 /* Supporting Files */,
 			);
 			path = "App Job Search";
 			sourceTree = "<group>";
@@ -138,6 +142,7 @@
 				6A0014152BA077C400695D50 /* LayoutHelper.swift */,
 				6A0014172BA077DC00695D50 /* StackViewHelper.swift */,
 				6A9E18DE2BA166EE007260EE /* CustomButton.swift */,
+				6A8429F02BA607750026B043 /* Observable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				6AC8DC2C2BA4852200A99759 /* AuthView */,
+				6A8429F42BA745BA0026B043 /* MainSearchView */,
 				6A0014212BA09EE200695D50 /* MainView */,
 				6AA0362D2BA2D2DE009E4AE0 /* VacancyDetailedView */,
 				6A0014102BA06A7000695D50 /* TabBarController.swift */,
@@ -167,12 +173,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		6A8429ED2BA5B1160026B043 /* Models */ = {
+		6A8429ED2BA5B1160026B043 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				6A8429EE2BA5B1320026B043 /* EnterAccountViewModel.swift */,
 			);
-			path = Models;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6A8429F42BA745BA0026B043 /* MainSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				6A8429F22BA745B50026B043 /* MainSearchViewController.swift */,
+			);
+			path = MainSearchView;
 			sourceTree = "<group>";
 		};
 		6AA0362D2BA2D2DE009E4AE0 /* VacancyDetailedView */ = {
@@ -270,6 +284,7 @@
 				6A8429E82BA5AD0D0026B043 /* MainViewController+CollectionView.swift in Sources */,
 				6A00141C2BA07B8100695D50 /* ApplyingController.swift in Sources */,
 				6A0014162BA077C400695D50 /* LayoutHelper.swift in Sources */,
+				6A8429F32BA745B50026B043 /* MainSearchViewController.swift in Sources */,
 				6AC8DC2E2BA49A4300A99759 /* AuthController.swift in Sources */,
 				6A00141A2BA07B2E00695D50 /* FavourtiesController.swift in Sources */,
 				6A0013FF2BA0592300695D50 /* EnterAccountController.swift in Sources */,
@@ -280,6 +295,7 @@
 				6A0014112BA06A7000695D50 /* TabBarController.swift in Sources */,
 				6A9E18DF2BA166EE007260EE /* CustomButton.swift in Sources */,
 				6AA036342BA3176B009E4AE0 /* VacancyMapDataCell.swift in Sources */,
+				6A8429F12BA607750026B043 /* Observable.swift in Sources */,
 				6A00141E2BA07BAD00695D50 /* MessagesController.swift in Sources */,
 				6AA0362F2BA2D32E009E4AE0 /* VacanyDetailedController.swift in Sources */,
 				6A0013FB2BA0592300695D50 /* AppDelegate.swift in Sources */,

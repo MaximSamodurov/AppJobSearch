@@ -32,7 +32,6 @@ class VacanyDetailedController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
         ])
         collectionView.dataSource = self
         collectionView.delegate = self

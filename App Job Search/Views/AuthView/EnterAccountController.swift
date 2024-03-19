@@ -7,9 +7,11 @@
 
 import UIKit
 
-class EnterAccountController: UIViewController {
+class EnterAccountController: UIViewController, UITextFieldDelegate, EnterAccountViewModelDelegate {
+
     
-    var model: EnterAccountViewModel = EnterAccountViewModel()
+    
+    var viewModel: EnterAccountViewModel = EnterAccountViewModel()
     
     let findJobLabel: UILabel = {
         let label = UILabel()
@@ -20,14 +22,18 @@ class EnterAccountController: UIViewController {
         return label
     }()
     
-    let emailTextField: UITextField = {
+    lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Электронная почта или телефон"
+//        textField.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0.009361755543, alpha: 1)
+        textField.layer.borderWidth = 1.0
         textField.textColor = .white
         textField.font = UIFont.boldSystemFont(ofSize: 15)
         textField.backgroundColor = #colorLiteral(red: 0.1926629543, green: 0.1960345805, blue: 0.2043911219, alpha: 1)
         textField.layer.cornerRadius = 8
         textField.leftViewMode = .always
+        textField.clearButtonMode = .whileEditing
+        textField.delegate = self
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
         let image = UIImage(systemName: "envelope")
         imageView.image = image
@@ -35,6 +41,15 @@ class EnterAccountController: UIViewController {
         imageView.contentMode = .center
         imageView.tintColor = .white
         return textField
+    }()
+    
+    let invalidateEmailLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = .systemRed
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
     }()
     
     let continiueButton: UIButton = {
@@ -65,7 +80,7 @@ class EnterAccountController: UIViewController {
     }()
     
     lazy var highStackView: VerticalStackView = {
-        let stack = VerticalStackView(arrangedSubViews: [findJobLabel, emailTextField, buttonsStackView])
+        let stack = VerticalStackView(arrangedSubViews: [findJobLabel, emailTextField, invalidateEmailLabel, buttonsStackView])
         stack.spacing = 15
         stack.distribution = .equalSpacing
         stack.layoutMargins = UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20)
@@ -118,6 +133,46 @@ class EnterAccountController: UIViewController {
         view.backgroundColor = .black
         setupHeader()
         setupLayout()
+        continiueButton.addTarget(self, action: #selector(continiueButtonPressed), for: .touchUpInside)
+        
+        bindViewModel()
+        viewModel.enterAccountViewModelDelegate = self
+    }
+    
+    func pushToAuthView() {
+        let authViewController = AuthController()
+        navigationController?.pushViewController(authViewController, animated: true)
+    }
+    
+    // передается текст emailTextField для обработки во viewModel
+    @objc private func continiueButtonPressed() {
+        viewModel.continiueButtonPressed(emailText: emailTextField.text ?? "")
+        viewModel.isValidEmail(emailValidation: emailTextField.text ?? "")
+    }
+    
+    // Метод который возвращает true если пользователь начал вводить данные в emailTextField
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if range.location == 0 {
+            // передаем статус true во viewModel
+            viewModel.continiueButtonStatus.value = true
+        }
+        return true
+    }
+            
+    // возвращаем данные в EnterAccountController(Controller) из EnterAccountViewModel
+    func bindViewModel() {
+        // кнопка "Продолжить" будет светиться или нет в зависимости от textField
+        viewModel.continiueButtonStatus.bind { continiueButtonStatus in
+                self.continiueButton.isEnabled = continiueButtonStatus ?? false
+        }
+        // Появляется красный бордер вокруг текстфилда если емаил неверный
+        viewModel.emailValidate.bind { emailValidate in
+            self.emailTextField.layer.borderColor = emailValidate
+        }
+        // Появляется сообщение "Вы ввели неверный email"
+        viewModel.emailValidateMessage.bind { emailValidateMessage in
+            self.invalidateEmailLabel.text = emailValidateMessage
+        }
     }
     
     private func setupLayout() {
